@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Account Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0e7ff, #f3e8ff);
+      min-height: 100vh;
+      padding-top: 90px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #6d28d9, #a855f7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-link:hover {
+      color: #e0e7ff !important;
+    }
+    .navbar-brand i {
+      margin-right: 8px;
+    }
+    .register-card {
+      border: none;
+      border-radius: 15px;
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 550px;
+      margin: 40px auto;
+      animation: fadeIn 0.8s ease-in-out;
+      transition: transform 0.3s, background-color 0.3s ease, color 0.3s ease;
+    }
+    .register-card:hover {
+      transform: translateY(-5px);
+    }
+    .form-control {
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-control:focus {
+      border-color: #6d28d9;
+      box-shadow: 0 0 0 0.25rem rgba(109, 40, 217, 0.25);
+    }
+    .btn-success {
+      background: linear-gradient(90deg, #16a34a, #4ade80);
+      border: none;
+      padding: 12px;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    .btn-success:hover {
+      background: linear-gradient(90deg, #4ade80, #16a34a);
+    }
+    .strength-meter {
+      height: 8px;
+      border-radius: 5px;
+      background: #e0e0e0;
+      margin-top: 4px;
+    }
+    .strength-meter-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.3s ease-in-out;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #1f2937;
+    }
+    .emoji {
+      font-size: 1.2rem;
+      margin-right: 8px;
+    }
+    h3 {
+      color: #6d28d9;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .alert {
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .form-check-input:checked {
+      background-color: #f59e00;
+      border-color: #f59e00;
+    }
+    .form-check-label {
+      color: white;
+      margin-left: 10px;
+      font-weight: 500;
+    }
+    a {
+      text-decoration: none;
+      color: #6d28d9;
+      font-weight: 500;
+    }
+    a:hover {
+      color: #a855f7;
+    }
+    body.dark-mode {
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      color: #e0e0e0;
+    }
+    body.dark-mode .navbar {
+      background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
+    }
+    body.dark-mode .register-card {
+      background: #2a2a2a;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    body.dark-mode .form-label {
+      color: #e0e0e0;
+    }
+    body.dark-mode .form-control {
+      background: #343a40;
+      color: #e0e0e0;
+      border-color: #4b5563;
+    }
+    body.dark-mode .form-control:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 0 0.25rem rgba(168, 85, 247, 0.25);
+    }
+    body.dark-mode a {
+      color: #a855f7;
+    }
+    body.dark-mode a:hover {
+      color: #d8b4fe;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 576px) {
+      .register-card {
+        padding: 1.5rem;
+        margin: 20px auto;
+      }
+      .form-check-label {
+        display: none;
+      }
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <i class="bi bi-person-fill-lock me-2"></i> Account Manager
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav ms-auto text-center text-lg-start">
+          <li class="nav-item"><a class="nav-link" href="/home"><i class="bi bi-house"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/register"><i class="bi bi-shield-lock"></i> Register</a></li>
+        </ul>
+        <!-- Dark Mode Toggle -->
+        <div class="form-check form-switch d-flex align-items-center mt-3 mt-lg-0 ms-lg-3">
+          <input class="form-check-input" type="checkbox" id="darkModeToggle" />
+          <label class="form-check-label toggle-label" for="darkModeToggle">
+            <i class="bi bi-moon-stars"></i> Dark Mode
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Flash Messages -->
+  <div class="container mt-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="flash-messages" class="mb-4">
+      {% for category, message in messages %}
+      <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <!-- Register Form -->
+  <div class="register-card">
+    <h3 class="text-center mb-4"><span class="emoji">🔒</span>Register to Account Manager</h3>
+    <form id="registerForm" method="post" action="/register" autocomplete="off">
+      <div class="mb-3">
+        <label for="accountName" class="form-label"><span class="emoji">🏷️</span>Full Name</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+          <input type="text" class="form-control" id="accountName" name="accountName" placeholder="e.g., John Doe" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label"><span class="emoji" >👤</span>Username / Email</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+          <input type="text" class="form-control" id="username" name="username" placeholder="e.g., user@example.com" required autocomplete="off">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label"><span class="emoji">🔑</span>Login Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter secure password" required autocomplete="off">
+        </div>
+        <div class="strength-meter" id="strengthMeter">
+          <div class="strength-meter-fill bg-danger" style="width: 0%;"></div>
+        </div>
+        <small id="strengthText" class="text-muted"></small>
+      </div>
+      <div class="mb-3">
+        <label for="masterPassword" class="form-label"><span class="emoji">🛡️</span>Master Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
+          <input type="password" class="form-control" id="masterPassword" name="masterPassword" placeholder="Enter master password" required>
+        </div>
+        <small class="text-muted">Used to encrypt/decrypt your stored credentials</small>
+      </div>
+      <div class="mb-3">
+        <label for="mobile" class="form-label"><span class="emoji">📱</span>Mobile No. (optional)</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+          <input type="text" maxlength="10" class="form-control" id="mobile" name="mobile" placeholder="e.g., +91-XXXXXXXXXX">
+        </div>
+      </div>
+      <div class="d-grid mb-3">
+       <a href="/login"> <button type="submit" class="btn btn-success">Register 💾</button></a>
+      </div>
+      <div class="text-center">
+        <small>Already have an account? <a href="/login">Login here</a></small>
+      </div>
+    </form>
+  </div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Auto-dismiss alerts
+    window.setTimeout(function () {
+      const alerts = document.querySelectorAll('.alert');
+      alerts.forEach(alert => {
+        let bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+        bsAlert.close();
+      });
+    }, 4000);
+    // Password strength meter
+    const passwordInput = document.getElementById('password');
+    const meterFill = document.querySelector('.strength-meter-fill');
+    const strengthText = document.getElementById('strengthText');
+    passwordInput.addEventListener('input', function () {
+      const val = passwordInput.value;
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[a-z]/.test(val)) score++;
+      if (/\d/.test(val)) score++;
+      if (/[\W]/.test(val)) score++;
+      const strength = ['Very Weak', 'Weak', 'Moderate', 'Strong', 'Very Strong'];
+      const colors = ['#dc3545', '#fd7e14', '#f59e00', '#6d28d9', '#16a34a'];
+      const width = ['10%', '30%', '50%', '75%', '100%'];
+      meterFill.style.width = width[score - 1] || '0%';
+      meterFill.style.backgroundColor = colors[score - 1] || '#e0e0e0';
+      strengthText.innerText = strength[score - 1] || '';
+    });
+    // Dark mode toggle
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.sidebar {
+    height: 100vh;
+    border-right: 1px solid #ddd;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #f8f9fa;
+}
+
+/* Buttons */
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    filter: brightness(90%);
+}
+
+/* Forms */
+form input, form select, form textarea {
+    transition: box-shadow 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    box-shadow: 0 0 8px rgba(0,123,255,.5);
+    outline: none;
+}
+
+/* Table */
+table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+table thead tr th {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+table tbody tr {
+    background-color: white;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+table tbody tr:hover {
+    box-shadow: 0 0 10px rgba(0,123,255,0.2);
+}

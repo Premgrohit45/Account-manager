@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Create Account{% endblock %}
+{% block content %}
+<h3>Create Account</h3>
+<form id="accountForm">
+    <input type="text" name="name" placeholder="Account Name" class="form-control mb-2" required />
+    <input type="url" name="url" placeholder="Account URL" class="form-control mb-2" />
+    <select name="type" class="form-control mb-2">
+        <option>Personal</option>
+        <option>Professional</option>
+        <option>Database</option>
+    </select>
+    <input type="text" name="username" placeholder="Username/Email" class="form-control mb-2" required />
+    <input type="password" name="password" placeholder="Password/API Key/Token" class="form-control mb-2" required />
+    <input type="text" name="mobile" placeholder="Mobile Number (optional)" class="form-control mb-2" />
+    <textarea name="remark" placeholder="Remark" class="form-control mb-2"></textarea>
+    <select name="priority" class="form-control mb-2">
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+    </select>
+    <button type="submit" class="btn btn-success">Save Account</button>
+</form>
+{% endblock %}
